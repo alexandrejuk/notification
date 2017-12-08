@@ -8,7 +8,7 @@ This is a micro-service using NodeJs and MongoDB.
 2. cd notification
 3. Install packages: npm install
 4. Build project and launch: npm start
-5. Open your browser at: http:localhost:3000
+5. Open your browser at: http://localhost:3000
 
 ## Author
 [Alexandre dos Santos Soares](https://github.com/alexandrejuk)
