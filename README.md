@@ -4,7 +4,7 @@ This is a micro-service using NodeJs and MongoDB.
 
 ## Installation
 
-1. Clone the repo: 
+1. Clone the repo: git remote add origin git@github.com:alexandrejuk/notification.git
 2. cd notification
 3. Install packages: npm install
 4. Build project and launch: npm start
