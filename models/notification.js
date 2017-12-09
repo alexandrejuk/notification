@@ -4,7 +4,7 @@ const db = require('../config/db');
 const Schema = mongoose.Schema;
 
 const idSchema = new Schema({
-  id: { type: String, required: [true, 'This field is required'] },
+  id_user: { type: String, required: [true, 'This field is required'] },
   view: {
     type: Boolean,
     require: [true, 'This field is required'],
