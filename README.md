@@ -1,4 +1,4 @@
-# Micro-service to notifications
+# Micro-service of notifications
 
 This is a micro-service using NodeJs and MongoDB.
 
