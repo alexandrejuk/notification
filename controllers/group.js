@@ -6,6 +6,7 @@ const getGroups = (req, res, next) => {
     .then(group => res.json(group))
     .catch(err => next(err));
 };
+
 const getGroupById = (req, res, next) => {
   const id = req.params.id;
   Group.find({ _id: id })
@@ -20,6 +21,7 @@ const postGroup = (req, res, next) => {
     .then(group => res.json(group))
     .catch(err => next(err));
 };
+
 const putGroup = (req, res, next) => {
   const id = req.params.id;
   const group = req.body;
@@ -30,4 +32,9 @@ const putGroup = (req, res, next) => {
     .catch(err => next(err));
 };
 
-module.exports = { getGroups, getGroupById, postGroup, putGroup };
+module.exports = { 
+  getGroups, 
+  getGroupById, 
+  postGroup, 
+  putGroup 
+};

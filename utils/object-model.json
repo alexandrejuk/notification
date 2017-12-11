@@ -1,18 +1,13 @@
 {
-  // object group
   "groups": [
-    // beginning
     { 
       "_id": "5a2b33dc4f3c9864f3441163", 
       "name": "Development", 
       "ids": [{ "id_user": "1" }, { "id_user": "4" }] 
     }
-    // end
+  
   ],
-
-  // object notification
   "notifications": [
-    // beginning
     {
       "title": "Create new call!",
       "message": "Call created to NODE-JS COMPUTER LTDA",
@@ -23,6 +18,5 @@
       "groups": ["Support", "All"],
       "date": "2017-12-09T02:26:56.879Z"
     }
-    // end
   ]
 }
