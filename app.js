@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const port = process.env.PORT || 3000;
 const notificationRoute = require('./routes/notification');
 const groupRoute = require('./routes/group');
 
@@ -18,4 +17,4 @@ app.use((err, req, res, next) => {
     res.json({ error: err.message });
 });
 
-app.listen(port, () => console.log('Backend running...'));
+module.exports = app;
