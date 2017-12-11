@@ -10,7 +10,7 @@ const idSchema = new Schema({
     require: [true, 'This field is required'],
     default: false
   }
-});
+}, { _id : false });
 
 const notificationSchema = new Schema(
   {
