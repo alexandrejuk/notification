@@ -3,9 +3,10 @@ const db = require('../config/db');
 
 const Schema = mongoose.Schema;
 
-const idSchema = new Schema({
-  id_user: { type: String, required: [true, 'This field is required'] },
-  view: {
+const ViewSchema = new Schema({
+  user_id: { type: String, required: [true, 'This field is required'] },
+  name: { type: String, required: [true, 'This field is required'] },
+  viewed: {
     type: Boolean,
     require: [true, 'This field is required'],
     default: false
@@ -17,7 +18,7 @@ const notificationSchema = new Schema(
     title: { type: String, required: [true, 'This field is required'] },
     message: { type: String, required: [true, 'This field is required'] },
     groups: { type: [String], required: [true, 'This field is required'] },
-    ids: { type: [idSchema], required: [true, 'This field is required'] },
+    views: { type: [ViewSchema], required: [true, 'This field is required'] },
     date: { type: String, required: [true, 'This field is required'] }
   },
   {

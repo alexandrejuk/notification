@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Group = require('../models/group');
+const Group = require('../models/notificationGroup');
 
 const getGroups = (req, res, next) => {
   Group.find({})
