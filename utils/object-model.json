@@ -1,22 +1,29 @@
 {
   "groups": [
     { 
-      "_id": "5a2b33dc4f3c9864f3441163", 
       "name": "Development", 
-      "ids": [{ "id_user": "1" }, { "id_user": "4" }] 
+      "users": [
+      	{ 
+      		"user_id": "1" , 
+      		"name": "Alexandre"
+      		
+      	}, 
+      	{ 
+      		"user_id": "2" , 
+      		"name": "Felipe"
+      		
+      	}] 
     }
   
   ],
   "notifications": [
-    {
-      "title": "Create new call!",
-      "message": "Call created to NODE-JS COMPUTER LTDA",
-      "ids": [
-        { "id_user": "1", "view": false },
-        { "id_user": "2", "view": false }
-      ],
-      "groups": ["Support", "All"],
-      "date": "2017-12-09T02:26:56.879Z"
-    }
+   { 
+    "title": "Notification 3",
+    "message": "Teste Alexandre",
+    "date": "2017-12-09T02:26:56.879Z",
+    "groups": [
+        "5a2fab1905ec6e12748e461a",
+        "5a2fab2b05ec6e12748e461d"
+    ]}
   ]
 }
