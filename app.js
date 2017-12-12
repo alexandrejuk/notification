@@ -21,7 +21,17 @@ app.use('/api', groupRoute);
 app.get('/api', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 }); 
-    
+
+io.on("connection", socket => {
+  console.log("user connected");
+  socket.on("disconnect", function() {
+    console.log("user disconnected");
+  });
+  socket.on("new-notification", notification => {
+    io.emit("notigication", notification);
+  });
+});
+
 app.use((err, req, res, next) => {
     res.status(err.status || 500);
     res.json({ error: err.message });
