@@ -6,7 +6,7 @@ const postNotification = (req, res, next) => {
   
   const getUsers = (accUsers, userArr) => {
     for(let i = 0; i < userArr.length; i++){
-      const foundUser = accUsers.find(user => user.user_id === userArr[i])
+      const foundUser = accUsers.find(user => user.user_id === userArr[i].user_id)
       if(!foundUser){
         accUsers.push(userArr[i])
       }
