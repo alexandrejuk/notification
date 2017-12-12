@@ -54,13 +54,13 @@ const getNotification = (req, res, next) => {
 
 const getTotalOfNotificationUser = (req, res, next) => {
   const id = req.params.id;
-  const view = req.query.view || false;
+  const query = req.query.viewed || false;
 
   Notification.find({
-      ids: {
+    views: {
         $elemMatch: {
-          id_user: id,
-          view: view
+          user_id: id,
+          viewed: query
         }
       }
     })
@@ -70,13 +70,13 @@ const getTotalOfNotificationUser = (req, res, next) => {
 
 const getNotificationUser = (req, res, next) => {
   const id = req.params.id;
-  const view = req.query.view || false;
+  const query = req.query.viewed || false;
 
   Notification.find({
-    ids: {
+    views: {
       $elemMatch: {
-        id_user: id,
-        view: view
+        user_id: id,
+        viewed: query
       }
     }
   }).then(
