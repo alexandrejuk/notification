@@ -1,27 +1,41 @@
 const mongoose = require('mongoose');
 const Notification = require('../models/notification');
-const Group = require('../models/group');
-
-const filterGroup = (acc, item) => {
-  if (acc.id_user !== item.id_user) acc.push(item);
-  return acc;
-};
+const Group = require('../models/notificationGroup');
 
 const postNotification = (req, res, next) => {
+  
+  const getUsers = (accUsers, userArr) => {
+    for(let i = 0; i < userArr.length; i++){
+      const foundUser = accUsers.find(user => user.user_id === userArr[i])
+      if(!foundUser){
+        accUsers.push(userArr[i])
+      }
+    }
+    return accUsers;
+  };
+  
+  const createViews = user => ({
+    user_id: user.user_id,
+    name: user.name,
+    view: false,
+  })
+
   const groups = req.body.groups;
-  Group.find({ _id: { $in: groups } }, { _id: 0,'ids.id_user': 1 })
-    .then(group => group)
-    .reduce(filterGroup)
-    .then(ids => { 
-      req.body.ids = ids.ids;  
-      return req.body;})
-    .then(body => {
-      const newNotification = new Notification(body);
-      newNotification
-        .save()
-        .then(notification => res.json(notification))
-        .catch(err => next(err));
-    });
+
+  Group.find({ _id: { $in: groups } }, { _id: 0,'users.user_id': 1,'users.name': 1 })
+    .exec()
+    .map(group => group.users)
+    .reduce(getUsers, [])
+    .map(createViews)
+    .then(views => {
+      const ntification = Object.assign({}, req.body);
+      ntification.views =  views
+
+      const newNotification = new Notification(ntification);
+      return newNotification.save()
+    })
+    .then(notification => res.json(notification))
+    .catch(next)
 };
 
 const putNotification = (req, res, next) => {
