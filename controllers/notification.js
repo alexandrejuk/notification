@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const Notification = require('../models/notification');
 const Group = require('../models/notificationGroup');
+const NotificationEvent = require('../noticationEvent');
 
 const postNotification = (req, res, next) => {
-  
   const getUsers = (accUsers, userArr) => {
     for(let i = 0; i < userArr.length; i++){
       const foundUser = accUsers.find(user => user.user_id === userArr[i].user_id)
@@ -34,7 +34,10 @@ const postNotification = (req, res, next) => {
       const newNotification = new Notification(ntification);
       return newNotification.save()
     })
-    .then(notification => res.json(notification))
+    .then(notification => {
+      NotificationEvent.emit('notification', notification._id);
+      res.json(notification);
+    })
     .catch(next)
 };
 
