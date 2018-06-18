@@ -19,7 +19,9 @@ const notificationSchema = new Schema(
     message: { type: String, required: [true, 'This field is required'] },
     groups: { type: [String], required: [true, 'This field is required'] },
     views: { type: [ViewSchema], required: [true, 'This field is required'] },
-    date: { type: String, required: [true, 'This field is required'] }
+    date: { type: String, required: [true, 'This field is required'] },
+    user_created: { type: String, required: [true, 'This field is required'] },
+    id_data: { type: Schema.Types.ObjectId },
   },
   {
     versionKey: false
